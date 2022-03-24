@@ -53,6 +53,7 @@ bool resultado;
 //##################################################################################################### Funções 
 
 void (*funcReset)() = 0;
+
   // Testa SD
   bool testaSD(){
     bool resultado=false;
@@ -79,6 +80,7 @@ bool FiltraID2(String arquivoSD, String id){
   } 
   else {
     Serial.println("Erro na abertura do arquivo " + arquivoSD);
+    beep3();
     beep3();
     funcReset();
   }
@@ -110,7 +112,13 @@ void setup(){
   }else{
     Serial.println(F("Falha na inicialização do SD Card."));
     digitalWrite(ledVermelho, HIGH);
-    beep3();    
+    digitalWrite(ledAmarelo, HIGH);
+    digitalWrite(ledVerde, HIGH);
+    beep3();
+     digitalWrite(ledVermelho, LOW);
+    digitalWrite(ledAmarelo, LOW);
+    digitalWrite(ledVerde, LOW);
+    beep4();    
   }
 
  
